@@ -1,0 +1,9 @@
+---
+
+- name: add rpm fusion free and non free repos
+  yum:
+    name: "{{ item }}"
+    state: present
+  become: true
+  with_items: - https://download1.rpmfusion.org/free/el/rpmfusion-free-release-7.noarch.rpm
+  - https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-7.noarch.rpm
