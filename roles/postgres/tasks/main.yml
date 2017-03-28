@@ -1,7 +1,7 @@
 ---
-name: install postgres and pyscopg2
+- name: install postgres and pyscopg2
   apt:
-    name: {{ item }}
+    name: "{{ item }}"
     state: present
   become: true
   with_items:
