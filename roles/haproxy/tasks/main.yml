@@ -24,4 +24,4 @@
     name: haproxy
     state: started
     enabled: yes
-  become: sudo
+  become: true
