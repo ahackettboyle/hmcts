@@ -1,0 +1,24 @@
+---
+name: install postgres and pyscopg2
+  yum:
+    name: {{ item }}
+    state: present
+  become: true
+  with_items:
+    - postgresql
+    - pyscopg2
+
+- name: create database
+  postgresql_db:
+    name: my_db
+    state: present
+  become: true
+
+- name: create database user
+  postgresql_user:
+    name: vagrant
+    password: vagrant
+    state: present
+  become: true
+  become_user: postgres
+  
