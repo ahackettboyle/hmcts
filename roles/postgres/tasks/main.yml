@@ -1,6 +1,6 @@
 ---
 name: install postgres and pyscopg2
-  yum:
+  apt:
     name: {{ item }}
     state: present
   become: true
@@ -21,4 +21,3 @@ name: install postgres and pyscopg2
     state: present
   become: true
   become_user: postgres
-  
