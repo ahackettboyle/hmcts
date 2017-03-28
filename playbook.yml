@@ -6,10 +6,27 @@
     - common
 
 - hosts: database
+  vars: 
+  postgresql_objects_users:
+    - name: dbadmin
+      password: password
+      role_attr_flags: SUPERUSER
+  postgresql_objects_databases:
+    - name: dbadmin
+      owner: dbadmin
 
+  pre_tasks:
+    - name: install postgres and pyscopg2
+  apt:
+    name: "{{ item }}"
+    state: present
+  become: true
+  with_items:
+    - postgresql
+    - python-psycopg2
   roles:
     - common
-    - postgres
+    - postgresql_objects
 
 - hosts: loadbalancer
 
