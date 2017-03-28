@@ -6,7 +6,7 @@
   become: true
   with_items:
     - postgresql
-    - pyscopg2
+    - python-pyscopg2
 
 - name: create database
   postgresql_db:
