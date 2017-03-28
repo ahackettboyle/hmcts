@@ -1,0 +1,27 @@
+---
+
+- name: install haproxy
+  yum:
+    name: haproxy
+    state: present
+  become: true
+
+- name: copy over haproxy conf files
+  template:
+    src: templates/haproxy.cfg
+    dest: /etc/haprocy/haproxy.cfg
+  become: true
+
+- name: copy over rsyslog to ensure HAProxy stats are logged
+  copy:
+    src: files/rsyslof.conf
+    dest: /etc/rsyslog.conf
+  become: true
+  notify: restart rsyslog
+
+- name: start haproxy and enable on start up
+  service:
+    name: haproxy
+    state: started
+    enabled: yes
+  become: sudo
