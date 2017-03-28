@@ -1,0 +1,18 @@
+---
+
+- hosts: webservers
+
+  roles:
+    - common
+
+- hosts: database
+
+  roles:
+    - common
+    - postgres
+
+- hosts: loadbalancer
+
+  roles:
+    - common
+    - haproxy
