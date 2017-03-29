@@ -1,0 +1,51 @@
+---
+- name: add postgres repository
+  apt_repository:
+    repo: deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main
+    state: present
+  become: true
+
+- name: add postgres repo key
+  apt_key:
+    url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+    state: present
+  become: true
+
+- name: install nginx, php and postgreSQL
+  apt:
+    name: "{{ item }}"
+    state: present
+  become: true
+  with_items:
+    - nginx
+    - postgresql-9.5
+    - php5-common
+    - php5-cli
+    - php5-fpm
+    - php5-pgsql
+
+- name: copy over nginx config files
+  copy:
+    src: files/nginx.conf
+    dest: /etc/nginx/nginx.conf
+  become: true
+
+- name: copy over php-fhm conf files
+  copy:
+    src: files/www.conf
+    dest: /etc/php-fpm.d/www.conf
+  become: true
+
+- name: starting services...
+  service:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  become: true
+  with_items:
+    - nginx
+    - postgresql-9.5
+    - php5-common
+    - php5-cli
+    - php5-fpm
+    - php5-pgsql
