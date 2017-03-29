@@ -21,3 +21,9 @@
     - postgresql-9.5
     - php5-pgsql
     - python-psycopg2
+
+- name: edit config file so postgres listens all all ips
+  copy:
+    src: files/postgresql.conf
+    dest: /etc/postgresql/9.5/main/postgresql.conf
+  become: true
