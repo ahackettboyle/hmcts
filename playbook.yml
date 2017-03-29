@@ -25,8 +25,9 @@
         - postgresql
         - python-psycopg2
   roles:
-    - common
-    - postgresql_objects
+    - role: common
+    - role: postgresql_objects
+      become: true
 
 - hosts: loadbalancer
 
