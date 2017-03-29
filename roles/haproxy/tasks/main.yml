@@ -9,7 +9,7 @@
 - name: copy over haproxy conf files
   template:
     src: templates/haproxy.cfg
-    dest: /etc/haprocy/haproxy.cfg
+    dest: /etc/haproxy/haproxy.cfg
   become: true
 
 - name: copy over rsyslog to ensure HAProxy stats are logged

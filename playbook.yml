@@ -19,16 +19,8 @@
     postgresql_objects_become: true
     postgresql_objects_become_user: postgres
 
-  pre_tasks:
-    - name: install postgres and pyscopg2
-      apt:
-        name: "{{ item }}"
-        state: present
-        update_cache: yes
-      become: true
-      with_items:
-        - postgresql
   roles:
+    - role: postgres
     - role: postgresql_objects
 
 
