@@ -1,0 +1,11 @@
+---
+- hosts: test-kitchen
+  vars:
+    postgresql_objects_manage_postgres: yes
+  roles:
+    - role: postgresql
+      postgresql_pg_hba_local_ipv4: no
+      postgresql_pg_hba_conf:
+        - "host    all             all             127.0.0.1/32            trust"
+    - role: postgresql_objects
+      postgresql_objects_become_user: postgres

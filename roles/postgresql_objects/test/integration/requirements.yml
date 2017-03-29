@@ -1,0 +1,4 @@
+---
+- src: galaxyprojectdotorg.postgresql
+  version: 0.9.2
+  name: postgresql

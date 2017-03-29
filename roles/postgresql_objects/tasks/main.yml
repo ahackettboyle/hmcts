@@ -1,0 +1,7 @@
+---
+- include: pretasks.yml
+  when: postgresql_objects_install_pretasks
+
+- include: configure.yml
+  become: "{{ postgresql_objects_become | default(omit) }}"
+  become_user: "{{ postgresql_objects_become_user | default(omit) }}"
