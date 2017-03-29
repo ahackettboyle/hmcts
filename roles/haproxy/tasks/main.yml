@@ -14,7 +14,7 @@
 
 - name: copy over rsyslog to ensure HAProxy stats are logged
   copy:
-    src: files/rsyslof.conf
+    src: files/rsyslog.conf
     dest: /etc/rsyslog.conf
   become: true
   notify: restart rsyslog
