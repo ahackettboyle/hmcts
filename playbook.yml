@@ -17,13 +17,13 @@
 
   pre_tasks:
     - name: install postgres and pyscopg2
-  apt:
-    name: "{{ item }}"
-    state: present
-  become: true
-  with_items:
-    - postgresql
-    - python-psycopg2
+      apt:
+        name: "{{ item }}"
+        state: present
+      become: true
+      with_items:
+        - postgresql
+        - python-psycopg2
   roles:
     - common
     - postgresql_objects
