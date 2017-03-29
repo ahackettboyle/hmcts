@@ -33,7 +33,7 @@
 - name: copy over php-fhm conf files
   copy:
     src: files/www.conf
-    dest: /etc/php-fpm.d/www.conf
+    dest: /etc/pool.d/www.conf
   become: true
 
 - name: starting services...
