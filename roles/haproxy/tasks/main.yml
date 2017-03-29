@@ -23,7 +23,6 @@
   copy:
     src: files/haproxy
     dest: /etc/default/haproxy
-    state: present
   become: true
 
 - name: start haproxy and enable on start up
