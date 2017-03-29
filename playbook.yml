@@ -6,30 +6,31 @@
     - common
 
 - hosts: database
-    vars:
-      postgresql_objects_users:
-      - name: dbadmin
-        password: password
-        role_attr_flags: SUPERUSER
-        state: present
-      postgresql_objects_databases:
-        - name: dbadmin
-          owner: dbadmin
-          state: present
+  vars:
+    postgresql_objects_users:
+    - name: dbadmin
+      password: password
+      role_attr_flags: SUPERUSER
+      state: present
+    postgresql_objects_databases:
+    - name: dbadmin
+      owner: dbadmin
+      state: present
 
-    pre_tasks:
-      - name: install postgres and pyscopg2
-        apt:
-          name: "{{ item }}"
-          state: present
-        become: true
-        with_items:
-          - postgresql
-          - python-psycopg2
-    roles:
-      - role: common
-      - role: postgresql_objects
-        become: true
+  pre_tasks:
+    - name: install postgres and pyscopg2
+      apt:
+        name: "{{ item }}"
+        state: present
+        update_cache: yes
+      become: true
+      with_items:
+        - postgresql
+        - python-psycopg2
+  roles:
+    - role: natefoo.postgresql_objects
+      become: true
+      become_user: postgres
 
 
 - hosts: loadbalancer
