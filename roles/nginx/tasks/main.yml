@@ -24,18 +24,6 @@
     - php5-fpm
     - php5-pgsql
 
-- name: copy over nginx config files
-  copy:
-    src: files/nginx.conf
-    dest: /etc/nginx/nginx.conf
-  become: true
-
-- name: copy over php-fhm conf files
-  copy:
-    src: files/www.conf
-    dest: /etc/php5/fpm/pool.d/www.conf
-  become: true
-
 - name: starting services...
   service:
     name: "{{ item }}"
@@ -46,3 +34,26 @@
     - nginx
     - postgresql
     - php5-fpm
+
+- name: copy over nginx config files
+  copy:
+    src: files/nginx.conf
+    dest: /etc/nginx/nginx.conf
+  become: true
+  notify: restart nginx
+
+- name: copy over php-fpm conf files
+  copy:
+    src: files/www.conf
+    dest: /etc/php5/fpm/pool.d/www.conf
+  become: true
+  notify: restart php-fpm
+
+- name: add php.index
+  copy:
+    src: files/index.php
+    dest: /usr/share/nginx/html/index.php
+  become: true
+  notify: restart nginx
+
+  
