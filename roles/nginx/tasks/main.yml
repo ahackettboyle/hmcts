@@ -33,7 +33,7 @@
 - name: copy over php-fhm conf files
   copy:
     src: files/www.conf
-    dest: /etc/pool.d/www.conf
+    dest: /etc/php5/fpm/pool.d/www.conf
   become: true
 
 - name: starting services...
@@ -44,8 +44,5 @@
   become: true
   with_items:
     - nginx
-    - postgresql-9.5
-    - php5-common
-    - php5-cli
+    - postgresql
     - php5-fpm
-    - php5-pgsql
