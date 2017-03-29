@@ -27,7 +27,6 @@
   roles:
     - common
     - postgresql_objects
-      become: true
 
 - hosts: loadbalancer
 
