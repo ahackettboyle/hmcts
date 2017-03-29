@@ -16,6 +16,8 @@
     - name: dbadmin
       owner: dbadmin
       state: present
+    postgresql_objects_become: true
+    postgresql_objects_become_user: postgres
 
   pre_tasks:
     - name: install postgres and pyscopg2
@@ -26,11 +28,8 @@
       become: true
       with_items:
         - postgresql
-        - python-psycopg2
   roles:
-    - role: natefoo.postgresql_objects
-      become: true
-      become_user: postgres
+    - role: postgresql_objects
 
 
 - hosts: loadbalancer
