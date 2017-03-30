@@ -1,7 +1,7 @@
 ---
 
 - hosts: webservers
-  vars_files: {{ env }}/group_vars/all.yml
+  vars_files: "{{ env }}/group_vars/all.yml"
 
   roles:
     - common
