@@ -50,8 +50,8 @@
   notify: restart php-fpm
 
 - name: add index.php
-  copy:
-    src: files/mysql.php
+  template:
+    src: templates/database.php
     dest: /usr/share/nginx/html/index.php
   become: true
   notify: restart nginx
