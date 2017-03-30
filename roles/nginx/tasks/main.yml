@@ -49,9 +49,9 @@
   become: true
   notify: restart php-fpm
 
-- name: add php.index
+- name: add index.php
   copy:
-    src: files/index.php
+    src: files/mysql.php
     dest: /usr/share/nginx/html/index.php
   become: true
   notify: restart nginx
