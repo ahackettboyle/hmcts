@@ -1,10 +1,7 @@
 <?php
-$servername = "mysql1";
-$username = "wordpressuser";
-$password = "secret";
-
+ 
 // Create connection
-$dbconn = pg_connect("host=10.0.1.121 , port=5432 , dbname=dbadmin , user=dbadmin , password={{ password}} ");
+$dbconn = pg_connect("host={{ db_ip }} , port=5432 , dbname=dbadmin , user=dbadmin , password={{ db_password }} ");
 
 // Check connection
 if ($dbconn->connect_error) {

@@ -1,3 +1,4 @@
 #ignore the enviroments directory and all ips and vars contained within
 
-environments/**/*
+prod/**/*
+dev/**/*
