@@ -1,6 +1,7 @@
 ---
 
 - hosts: webservers
+  vars_files: {{ env }}/group_vars/all.yml
 
   roles:
     - common
@@ -28,5 +29,5 @@
 - hosts: loadbalancer
 
   roles:
-    - common
-    - haproxy
+    - { role: common, when: "env == 'prod'" }
+    - { role: haproxy, when: "env == 'prod'" }
