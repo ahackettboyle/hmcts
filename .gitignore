@@ -1,4 +1,4 @@
 #ignore the enviroments directory and all ips and vars contained within
 
-prod/**/*
-dev/**/*
+ansible/prod/group_vars/*
+ansible/dev/group_vars/*
