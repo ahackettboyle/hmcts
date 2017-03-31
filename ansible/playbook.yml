@@ -7,18 +7,7 @@
     - nginx
 
 - hosts: database
-  vars:
-    postgresql_objects_users:
-    - name: dbadmin
-      password: password
-      role_attr_flags: SUPERUSER
-      state: present
-    postgresql_objects_databases:
-    - name: dbadmin
-      owner: dbadmin
-      state: present
-    postgresql_objects_become: true
-    postgresql_objects_become_user: postgres
+
 
   roles:
     - role: postgres
