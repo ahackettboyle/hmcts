@@ -1,1 +1,3 @@
 #ignore the enviroments directory and all ips and vars contained within
+
+/ansible/master/**/*
