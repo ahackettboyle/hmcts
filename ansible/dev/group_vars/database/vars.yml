@@ -8,5 +8,5 @@
   - name: dbadmin
     owner: dbadmin
     state: present
-postgresql_objects_become: true
-postgresql_objects_become_user: postgres
+- postgresql_objects_become: true
+- postgresql_objects_become_user: postgres
