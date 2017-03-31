@@ -1,12 +1,12 @@
 ---
-- postgresql_objects_users:
+postgresql_objects_users:
   - name: dbadmin
     password: "{{ vault_password }}"
     role_attr_flags: SUPERUSER
     state: present
-- postgresql_objects_databases:
+postgresql_objects_databases:
   - name: dbadmin
     owner: dbadmin
     state: present
-- postgresql_objects_become: true
-- postgresql_objects_become_user: postgres
+postgresql_objects_become: true
+postgresql_objects_become_user: postgres
