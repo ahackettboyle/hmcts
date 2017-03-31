@@ -6,4 +6,4 @@ env: prod
 server1_ip: 10.0.5.114
 server2_ip: 10.0.5.138
 db_ip: 10.0.5.237
-db_password: {{ vault_db_password }}
+db_password: "{{ vault_db_password }}"
