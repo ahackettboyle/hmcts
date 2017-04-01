@@ -1,0 +1,9 @@
+- job:
+    name: check-ansible-code
+    triggers:
+      - reverse:
+            jobs: 'githook'
+            result: 'success'
+
+    builders:
+      - shell "export ANSIBLE_VAULT_PASSWORD_FILE=~/.ssh/.vault_pass"

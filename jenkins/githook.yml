@@ -1,0 +1,14 @@
+- job:
+    name: githook
+    project-type: freestyle
+    properties:
+      - github:
+          url: https://github.com/ahackettboyle/hmcts.git
+
+    scm:
+      - git:
+          url: https://github.com/ahackettboyle/hmcts.git
+
+
+    triggers:
+      - github
