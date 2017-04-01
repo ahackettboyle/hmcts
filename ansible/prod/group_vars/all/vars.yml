@@ -8,3 +8,5 @@ server2_ip: 10.0.5.138
 db_ip: 10.0.5.237
 db_password: "{{ vault_db_password }}"
 lb_algo: roundrobin
+db_user: dbadmin
+db_name: dbadmin
