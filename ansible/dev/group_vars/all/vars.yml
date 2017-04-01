@@ -7,5 +7,5 @@ db_ip: 10.0.1.20
 db_password: "{{ vault_db_password }}"
 db_user: dbadmin
 db_name: dbadmin
-server1_ip:
-server2_ip: 
+server1_ip: 10.0.1.20
+server2_ip: 10.0.1.20
