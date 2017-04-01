@@ -29,18 +29,18 @@
   become: true
   notify: restart postgres
 
-- name: edit pg_hba to allow webservers to authenticate
-  template:
-    src: templates/dev_pg_hba.conf
-    dest: /etc/postgresql/9.5/main/pg_hba.conf
-  when: env == "dev"
-  become: true
-  notify: restart postgres
-
-- name: edit pg_hba to allow webservers to authenticate
-  template:
-    src: templates/prod_pg_hba.conf
-    dest: /etc/postgresql/9.5/main/pg_hba.conf
-  when: env == "prod"
-  become: true
-  notify: restart postgres
+# - name: edit pg_hba to allow webservers to authenticate
+#   template:
+#     src: templates/dev_pg_hba.conf
+#     dest: /etc/postgresql/9.5/main/pg_hba.conf
+#   when: env == "dev"
+#   become: true
+#   notify: restart postgres
+#
+# - name: edit pg_hba to allow webservers to authenticate
+#   template:
+#     src: templates/prod_pg_hba.conf
+#     dest: /etc/postgresql/9.5/main/pg_hba.conf
+#   when: env == "prod"
+#   become: true
+#   notify: restart postgres
