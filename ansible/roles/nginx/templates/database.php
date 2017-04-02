@@ -18,7 +18,7 @@ $query = "SELECT * FROM compliments";
       exit();
   }
 
-  while($myrow = pg_fetch_assoc($result)) {
+  while($row = pg_fetch_row($result)) {
       echo "Compliment number $row[0]: $row[1] "
 
 
