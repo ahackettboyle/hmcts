@@ -6,7 +6,7 @@
     dest: /etc/postgresql/9.5/main/pg_hba.conf
   when: env == "dev"
   become: true
-  register: pg_hba
+  register: pg_hba_dev
 
 - name: edit pg_hba to allow webservers to authenticate
   template:
@@ -21,7 +21,7 @@
     name: postgresql
     state: restarted
   become: true
-  when: pg_hba.changed
+  when: pg_hba_dev.changed
 
 - name: copy over psql script
   copy:
