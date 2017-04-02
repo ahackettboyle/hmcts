@@ -1,7 +1,7 @@
 <?php
 
 // Create connection
-$dbconn = pg_pconnect("host={{ db_ip }} , port=5432 , dbname={{ db_name }} , user={{ db_user }} , password={{ db_password }} ");
+$dbconn = pg_pconnect("host={{ db_ip }} port=5432 dbname={{ db_name }} user={{ db_user }} password={{ db_password }} ");
 
 // Check connection
 if($dbconn) {
