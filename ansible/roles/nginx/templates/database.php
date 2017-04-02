@@ -1,7 +1,7 @@
 <?php
 
 // Create connection
-$dbconn = pg_connect("host={{ db_ip }} , port=5432 , dbname=dbadmin , user=dbadmin , password={{ db_password }} ");
+$dbconn = pg_connect("host={{ db_ip }} , port=5432 , dbname={{ db_name }} , user={{ db_user }} , password={{ db_password }} ");
 
 // Check connection
 if ($dbconn->connect_error) {
@@ -9,7 +9,7 @@ if ($dbconn->connect_error) {
 }
 echo "Connected successfully";
 
-$query = "SELECT * FROM compliments"; 
+$query = "SELECT * FROM compliments";
 
   $result = pg_query($query);
   if (!$result) {

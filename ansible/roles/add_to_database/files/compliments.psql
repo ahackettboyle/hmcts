@@ -11,7 +11,7 @@ CREATE TABLE compliments
 );
 
 
-insert compliments
+insert into compliments(compliment_id, compliment)
    values(1, 'Callers are intimidated by how funny your voicemail greeting is.');
-insert compliments
+insert into compliments
    values(2, 'You could open that jar of mayonnaise using only 3 fingers.');
