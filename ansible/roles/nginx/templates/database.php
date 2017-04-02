@@ -4,10 +4,11 @@
 $dbconn = pg_pconnect("host={{ db_ip }} , port=5432 , dbname={{ db_name }} , user={{ db_user }} , password={{ db_password }} ");
 
 // Check connection
-if ($dbconn->connect_error) {
-    die("Connection failed: " . $dbconn->connect_error);
+if($dbconn) {
+   echo 'connected';
+} else {
+    echo 'there has been an error connecting';
 }
-echo "Connected successfully <br/>";
 
 $query = "SELECT * FROM compliments";
 
