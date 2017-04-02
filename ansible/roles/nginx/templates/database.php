@@ -11,7 +11,7 @@ echo "Connected successfully";
 
 $query = "SELECT * FROM compliments";
 
-  $result = pg_query($query);
+  $result = pg_query($dbconn, $query);
   if (!$result) {
       echo "Problem with query " . $query . "<br/>";
       echo pg_last_error();
@@ -19,8 +19,7 @@ $query = "SELECT * FROM compliments";
   }
 
   while($myrow = pg_fetch_assoc($result)) {
-      printf ("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>", $myrow['id'], htmlspecialchars($myrow['firstname']), htmlspecialchars($myrow['surname']), htmlspecialchars($myrow['emailaddress']));
-  }
+      echo "Compliment number $row[0]: $row[1] "
 
 
 
