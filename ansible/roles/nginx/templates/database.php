@@ -19,7 +19,7 @@ $query = "SELECT * FROM compliments";
   }
 
   while($row = pg_fetch_row($result)) {
-      echo "Compliment number $row[0]: $row[1] "
+      echo "Compliment number $row[0]: $row[1]";
   }
 
 
