@@ -23,6 +23,15 @@
   become: true
   when: pg_hba.changed
 
+- name: copy over psql script
+  copy:
+    src: files/compliments.psql
+    dest: /home/ubuntu/compliments.psql
 
 - name: checking if database table exists
-  command: psql -U dbadmin -d dbadmin  -lqTa | grep compliments
+  shell: "psql -U {{ db_user }} -d {{ db_name }}  -lqTa | grep compliments"
+  register: table_exists
+
+- name: add table and data if it doesn't exist
+  command: "psql -U {{db_user }} -d {{ db_ name }} -f compliments.psql"
+  when: table_exists.rc != 1
