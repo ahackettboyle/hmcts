@@ -27,7 +27,7 @@
     src: files/postgresql.conf
     dest: /etc/postgresql/9.5/main/postgresql.conf
   become: true
-  notify: restart postgres
+  register: postgresconf
 
 - name: edit pg_hba to allow webservers to authenticate
   template:
@@ -35,7 +35,7 @@
     dest: /etc/postgresql/9.5/main/pg_hba.conf
   when: env == "dev"
   become: true
-  notify: restart postgres
+  register: pg_hba
 
 - name: edit pg_hba to allow webservers to authenticate
   template:
@@ -43,4 +43,11 @@
     dest: /etc/postgresql/9.5/main/pg_hba.conf
   when: env == "prod"
   become: true
-  notify: restart postgres
+  register: pg_hba
+
+- name: restart_postgres straight away
+  service:
+    name: postgresql
+    state: restarted
+  become: true
+  when: pg_hba.changed or postgresconf.changed
