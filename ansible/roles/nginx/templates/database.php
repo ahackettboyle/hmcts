@@ -11,7 +11,7 @@ echo "Connected successfully <br/>";
 
 $query = "SELECT * FROM compliments";
 
-  $result = pg_query($dbconn, $query);
+  $result = pg_query($dbconn, $query) or die( "Query failed: " . pg_last_error()) ;
   // if (!$result) {
   //     echo "Problem with query " . $query . "<br/>";
   //     echo pg_last_error();
