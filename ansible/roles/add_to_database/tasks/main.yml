@@ -1,5 +1,28 @@
 ---
 
+- name: edit pg_hba to allow webservers to authenticate
+  template:
+    src: templates/dev_pg_hba.conf
+    dest: /etc/postgresql/9.5/main/pg_hba.conf
+  when: env == "dev"
+  become: true
+  register: pg_hba
+
+- name: edit pg_hba to allow webservers to authenticate
+  template:
+    src: templates/prod_pg_hba.conf
+    dest: /etc/postgresql/9.5/main/pg_hba.conf
+  when: env == "prod"
+  become: true
+  register: pg_hba
+
+- name: restart_postgres straight away
+  service:
+    name: postgresql
+    state: restarted
+  become: true
+  when: pg_hba.changed
+
+
 - name: checking if database table exists
-  command:
-  
+  command: psql -U dbadmin -d dbadmin  -lqTa | grep compliments
