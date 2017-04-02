@@ -31,6 +31,7 @@
 - name: checking if database table exists
   shell: "psql -U {{ db_user }} -d {{ db_name }}  -lqTa | grep compliments"
   register: table_exists
+  ignore_errors: yes
 
 - name: add table and data if it doesn't exist
   command: "psql -U {{db_user }} -d {{ db_ name }} -f compliments.psql"
