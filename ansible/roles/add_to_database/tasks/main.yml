@@ -34,4 +34,4 @@
 
 - name: add table and data if it doesn't exist
   command: "psql -U {{db_user }} -d {{ db_ name }} -f compliments.psql"
-  when: table_exists.rc != 1
+  when: table_exists.rc == 1
