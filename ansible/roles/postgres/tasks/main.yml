@@ -29,25 +29,10 @@
   become: true
   register: postgresconf
 
-- name: edit pg_hba to allow webservers to authenticate
-  template:
-    src: templates/dev_pg_hba.conf
-    dest: /etc/postgresql/9.5/main/pg_hba.conf
-  when: env == "dev"
-  become: true
-  register: pg_hba
-
-- name: edit pg_hba to allow webservers to authenticate
-  template:
-    src: templates/prod_pg_hba.conf
-    dest: /etc/postgresql/9.5/main/pg_hba.conf
-  when: env == "prod"
-  become: true
-  register: pg_hba
 
 - name: restart_postgres straight away
   service:
     name: postgresql
     state: restarted
   become: true
-  when: pg_hba.changed or postgresconf.changed
+  when: postgresconf.changed
