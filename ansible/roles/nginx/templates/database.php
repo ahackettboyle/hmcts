@@ -5,9 +5,9 @@ $dbconn = pg_pconnect("host={{ db_ip }} port=5432 dbname={{ db_name }} user={{ d
 
 // Check connection
 if($dbconn) {
-   echo 'connected';
+   echo 'connected<br/>';
 } else {
-    echo 'there has been an error connecting';
+    echo 'there has been an error connecting<br/>';
 }
 
 $query = "SELECT * FROM compliments";
@@ -20,7 +20,7 @@ $query = "SELECT * FROM compliments";
   // }
 
   while($row = pg_fetch_row($result)) {
-      echo "Compliment number $row[0]: $row[1]";
+      echo "Compliment number $row[0]: $row[1]<br/>";
   }
 
 
