@@ -8,12 +8,10 @@
 
 - hosts: database
 
-
   roles:
     - role: postgres
     - role: postgresql_objects
     - role: add_to_database
-
 
 - hosts: loadbalancer
 
