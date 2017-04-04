@@ -9,3 +9,4 @@
 - name: upgrade apt
   apt:
     upgrade: yes
+  become: true
