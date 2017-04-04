@@ -10,7 +10,7 @@
 
   roles:
     - role: postgres
-    - role: postgresql_objects
+    - { role: postgresql_objects, tags: test }
     - role: add_to_database
 
 - hosts: loadbalancer
