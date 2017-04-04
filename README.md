@@ -11,7 +11,7 @@ To use this you must have:
 
 Build steps:
 - Clone this repo onto your laptop and edit the ansible/master/inventory file with the public ip of your management machine
-- Make sure your private key file is saved in ~/.ssh and change the name of the ansible_ssh_private_key_file variable (make sure the location stays as ~/.ssh however
+- Make sure your private key file is saved in ~/.ssh and change the name of the ansible_ssh_private_key_file variable (make sure the location stays as ~/.ssh however)
 - Add your key file to ansible/roles/installation/files
 - run ansible-playbook -i master build_master.yml
 - log on jenkins at http://{master_ip}:8080/ 
