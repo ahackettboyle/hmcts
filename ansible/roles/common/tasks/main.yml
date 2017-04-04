@@ -1,5 +1,20 @@
 ---
 
+- name: help x2
+  debug:
+  msg: {{ansible_user}}
+  become: true
+
+- name: help
+  command: echo $LOGNAME
+  become: true
+  register: output
+
+- name: help x3
+  debug: output.stdout
+
+
+
 - name: update apt
   apt:
     update_cache: yes
