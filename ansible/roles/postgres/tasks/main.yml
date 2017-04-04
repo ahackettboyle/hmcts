@@ -11,11 +11,14 @@
     state: present
   become: true
 
+
+
 - name: install postgres 9.5, postgres-php module and pyscopg2
   apt:
     name: "{{ item }}"
     state: present
     update_cache: yes
+    upgrade: yes
   become: true
   with_items:
     - postgresql-9.5
