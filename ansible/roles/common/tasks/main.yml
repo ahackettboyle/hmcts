@@ -12,7 +12,7 @@
 
 - name: help x3
   debug:
-    msg: output.stdout
+    msg: "{{output.stdout}}"
 
 
 
