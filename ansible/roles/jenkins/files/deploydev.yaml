@@ -6,4 +6,4 @@
             result: 'success'
 
     builders:
-    - shell: "#!/bin/bash \n export ANSIBLE_VAULT_PASSWORD_FILE=~/.ssh/.vault_pass \n ansible-playbook -i /var/lib/jenkins/workspace/githook/ansible/dev /var/lib/jenkins/workspace/githook/ansible/playbook.yml"
+    - shell: "#!/bin/bash \n export ANSIBLE_VAULT_PASSWORD_FILE=~/.ssh/.vault_pass \n ansible-playbook -i /var/lib/jenkins/workspace/githook/ansible/dev /var/lib/jenkins/workspace/githook/ansible/build_nodes.yml"
