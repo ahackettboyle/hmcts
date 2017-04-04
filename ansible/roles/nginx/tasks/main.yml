@@ -11,6 +11,10 @@
     state: present
   become: true
 
+- name: update apt again
+  command: apt-get -y update
+  become: true
+
 - name: install nginx, php and postgreSQL
   apt:
     name: "{{ item }}"

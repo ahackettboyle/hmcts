@@ -1,5 +1,5 @@
 #ignore the enviroments directory and all ips and vars contained within
 
-/ansible/master/roles/*
+/ansible/master/.roles/*
 /ansible/master/*.yml
 /asnible/master/*.retry

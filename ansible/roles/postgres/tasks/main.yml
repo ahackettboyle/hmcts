@@ -12,6 +12,10 @@
   become: true
 
 
+- name: update apt again - in the command line
+  command: apt-get -y update
+  become: true
+
 
 - name: install postgres 9.5, postgres-php module and pyscopg2
   apt:
