@@ -1,11 +1,10 @@
 
 [webservers]
-server1 ansible_host=10.0.5.138
-server2	ansible_host=10.0.5.114
+server1 ansible_host=10.0.5.40
+server2	ansible_host=10.0.5.76
 
 [database]
-db	ansible_host=10.0.5.237
+db	ansible_host=10.0.1.161
 
 [loadbalancer]
 lb	ansible_host=10.0.1.220
-

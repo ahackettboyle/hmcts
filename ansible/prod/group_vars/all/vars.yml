@@ -3,8 +3,8 @@
 ansible_ssh_private_key_file: "{{ vault_ansible_ssh_private_key_file }}"
 ansible_user: ubuntu
 env: prod
-server1_ip: 10.0.5.114
-server2_ip: 10.0.5.138
+server1_ip: 10.0.5.40
+server2_ip: 10.0.5.76
 db_ip: 10.0.5.237
 webserver_subnet: 10.0.5.0/24
 db_password: "{{ vault_db_password }}"
