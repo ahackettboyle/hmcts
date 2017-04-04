@@ -20,5 +20,5 @@ Build steps:
     - Add the users api-token and the ip of the management server to ansible/master/groupvars/all/vars.yml 
     - run ansible-playbook -i master configure.yml
  
- - Add the ips of your other servers to the relevant files within ansible/*/group_vars ansible/*/inventory where * is dev or prod as appropriate
+ - Add the ips of your other servers to the relevant files within ansible/{dev or prod}/group_vars ansible/{dev or prod}/inventory
  - Pushing these changes to the git repo should trigger a complete build of the enviroment via jenkins
