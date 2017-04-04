@@ -2,7 +2,7 @@
 
 - name: help x2
   debug:
-  msg: "{{ansible_user}}"
+    msg: "{{ansible_user}}"
   become: true
 
 - name: help
@@ -11,7 +11,8 @@
   register: output
 
 - name: help x3
-  debug: output.stdout
+  debug:
+    msg: output.stdout
 
 
 
