@@ -1,26 +1,9 @@
 ---
-
-- name: help x2
-  debug:
-    msg: "{{ansible_user}}"
+- name: apt doesn't work so do a manual update
+  command: apt-get -y update
   become: true
 
-- name: help
-  command: echo $LOGNAME
-  become: true
-  register: output
 
-- name: help x3
-  debug:
-    msg: "{{output.stdout}}"
-
-
-
-- name: update apt
-  apt:
-    update_cache: yes
-  become: true
-  become_user: root
 
 - name: upgrade apt
   apt:

@@ -9,6 +9,7 @@
 - hosts: database
 
   roles:
+    - role: common
     - role: postgres
     - { role: postgresql_objects, tags: test }
     - role: add_to_database
