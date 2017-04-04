@@ -23,6 +23,7 @@
     - php5-cli
     - php5-fpm
     - php5-pgsql
+  tags: test
 
 - name: starting services...
   service:
@@ -55,5 +56,3 @@
     dest: /usr/share/nginx/html/index.php
   become: true
   notify: restart nginx
-
-  

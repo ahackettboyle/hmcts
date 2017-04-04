@@ -17,13 +17,12 @@
   apt:
     name: "{{ item }}"
     state: present
-    update_cache: yes
-    upgrade: yes
   become: true
   with_items:
     - postgresql-9.5
     - php5-pgsql
     - python-psycopg2
+  tags: test
 
 - name: edit config file so postgres listens all all ips
   copy:
