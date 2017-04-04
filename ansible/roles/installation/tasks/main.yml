@@ -1,0 +1,96 @@
+---
+
+
+- name: install software properties so we can add ansible ppa
+  apt:
+    name: software-properties-common
+    state: present
+    update_cache: yes
+  become: true
+
+- name: adding ansible, postgres and jenkins repositories so latest version can be downloaded
+  apt_repository:
+    repo: "{{ item }}"
+  become: true
+  with_items:
+    - ppa:ansible/ansible
+    - deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main
+    - deb http://pkg.jenkins.io/debian-stable binary/
+
+
+- name: add jenkins and postgres repo keys
+  apt_key:
+    url: "{{ item }}"
+    state: present
+  become: true
+  with_items:
+    - https://www.postgresql.org/media/keys/ACCC4CF8.asc
+    - https://pkg.jenkins.io/debian/jenkins-ci.org.key
+
+- name: install jenkins, java, ansible, git and pip
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  become: true
+  with_items:
+    - ansible
+    - openjdk-7-jre
+    - openjdk-7-jdk
+    - jenkins
+    - git
+    - postgresql-9.5
+    - python-pip
+
+- name: install jenkins job builder using pip
+  pip:
+    name: jenkins-job-builder
+  become: true
+
+
+- name: start jenkins and enable on start up
+  service:
+    name: jenkins
+    state: started
+    enabled: yes
+  become: true
+
+- name: create key files locations if they don't already exist
+  file:
+    name: "{{ amazon_keyfile_location }}"
+    state: directory
+    owner: jenkins
+    group: jenkins
+  become: true
+
+- name: create key files locations if they don't already exist
+  file:
+    name: "{{ ansible_vaultpass_location }}"
+    state: directory
+    owner: jenkins
+    group: jenkins
+  become: true
+
+- name: copy amazon private key files to secure location that jenkins knows
+  copy:
+    src: files/ANNA.pem
+    dest: "{{ amazon_keyfile_location }}/ANNA.pem"
+    owner: jenkins
+    group: jenkins
+    mode: 0400
+  become: true
+
+- name: copy over ansible vault pass files
+  copy:
+    src: files/.vault_pass
+    dest: "{{ ansible_vaultpass_location }}/.vault_pass"
+    owner: jenkins
+    group: jenkins
+    mode: 0400
+  become: true
+
+- name: copy over ansible config files
+  copy:
+    src: files/ansible.cfg
+    dest: /etc/ansible/ansible.cfg
+  become: true

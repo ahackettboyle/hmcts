@@ -1,0 +1,39 @@
+---
+
+- name: make jenkins_jobs directory
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0744
+  become: true
+  with_items:
+    - "{{ ansible_env.HOME }}/.config"
+    - "{{ ansible_env.HOME }}/.config/jenkins_jobs"
+
+- name: make a directory for the jenkins jobs files
+  file:
+    path: "{{ ansible_env.HOME }}/jobs"
+    state: directory
+    mode: 0755
+
+- name: copy over jenkins jobs files
+  copy:
+    src: "files/{{ item }}.yaml"
+    dest: "{{ ansible_env.HOME }}/jobs"
+  with_items:
+    - githook
+    - deploydev
+    - deployprod
+  register: jobs
+
+- name: copy jenkins ini file
+  template:
+    src: templates/jenkins_jobs.ini.j2
+    dest: "{{ ansible_env.HOME }}/.config/jenkins_jobs/jenkins_jobs.ini"
+    mode: 0754
+  register: ini
+
+
+- name: update jenkins
+  command: jenkins-jobs update jobs
+  when: jobs.changed or ini.changed
