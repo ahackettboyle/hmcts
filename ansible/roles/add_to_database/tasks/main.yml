@@ -21,7 +21,8 @@
     name: postgresql
     state: restarted
   become: true
-  when: pg_hba_dev.changed
+  when: pg_hba_dev.changed or pg_hba.changed
+
 
 - name: copy over psql script
   copy:
