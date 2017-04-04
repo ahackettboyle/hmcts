@@ -3,10 +3,11 @@
 - name: update apt
   apt:
     update_cache: yes
-
   become: true
+  become_user: root
 
 - name: upgrade apt
   apt:
     upgrade: yes
   become: true
+  become_user: root
