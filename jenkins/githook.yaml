@@ -4,7 +4,6 @@
     properties:
       - github:
           url: https://github.com/ahackettboyle/hmcts.git
-
     scm:
       - git:
           url: https://github.com/ahackettboyle/hmcts.git

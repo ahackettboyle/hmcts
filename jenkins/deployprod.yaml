@@ -1,0 +1,9 @@
+- job:
+    name: deploy-prod
+    triggers:
+      - reverse:
+            jobs: 'deploy-dev'
+            result: 'success'
+
+    builders:
+     - shell: "#!/bin/bash \n export ANSIBLE_VAULT_PASSWORD_FILE=~/.ssh/.vault_pass \n ansible-playbook -i /var/lib/jenkins/workspace/githook/ansible/prod /var/lib/jenkins/workspace/githook/ansible/build_nodes.yml"
