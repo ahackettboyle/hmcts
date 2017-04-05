@@ -4,7 +4,7 @@
   file:
     path: "{{ item }}"
     state: directory
-    mode: 0744
+    mode: 0777
   become: true
   with_items:
     - "{{ ansible_env.HOME }}/.config"
@@ -14,7 +14,7 @@
   file:
     path: "{{ ansible_env.HOME }}/jobs"
     state: directory
-    mode: 0755
+    mode: 0777
 
 - name: copy over jenkins jobs files
   copy:

@@ -3,5 +3,5 @@ ansible_ssh_private_key_file: "{{ vault_ansible_ssh_private_key_file }}"
 amazon_keyfile_location: "{{ vault_amazon_keyfile_location }}"
 ansible_vaultpass_location: "{{ vault_ansible_vaultpass_location}}"
 jenkins_user: admin
-master_ip: 34.253.110.145 
+master_ip: 54.77.64.75 
 api_token: "{{ vault_api_token }}"
