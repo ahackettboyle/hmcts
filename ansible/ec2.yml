@@ -1,0 +1,13 @@
+---
+
+- hosts: localhost
+  vars:
+    aws_key: ANNA
+    instance_type: t2.micro
+    image: ami-a192bad2
+    public_subnet: subnet-ac9d9ada
+    master_security_group: sg-b978a0c0
+    zone: eu-west-1
+    prefix: ANNA
+  roles:
+    - ec2-instances
