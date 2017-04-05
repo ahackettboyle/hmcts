@@ -15,7 +15,7 @@ Build steps:
 - Add your key file to ansible/roles/installation/files
 - run ansible-playbook -i master build_master.yml
 - log on jenkins at http://{master_ip}:8080/ 
-- Configure jenkins: install plugins, configure admin user and extract the users API token, configure security, configure GitHub API as a git server and get it to automatically manage hooks.
+- Configure jenkins: install plugins, configure admin user and extract the users API token, configure security, configure GitHub API as a git server (although in a real deployment you would use a private git server for SCM management) and get Jenkins to automatically manage hooks - you will need a GitHub API token for this.
 - From here you can either configure jenkins jobs by copying from the jenkins folder of the repo or use the basic playbook below:
     - Add the users api-token and the ip of the management server to ansible/master/groupvars/all/vars.yml 
     - run ansible-playbook -i master configure.yml
